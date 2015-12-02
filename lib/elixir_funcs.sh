@@ -84,12 +84,16 @@ function backup_mix() {
 
 function install_hex() {
   output_section "Installing Hex"
-  if [ -z ${hex_source} ]; then
-    mix local.hex --force
-  else
-    mix archive.install ${hex_source} --force
-  fi
-}
+  # if [ -z ${hex_source} ]; then
+  #   mix local.hex --force
+  # else
+  #   mix archive.install ${hex_source} --force
+  # fi
+  cd ${HOME}
+  git clone https://github.com/hexpm/hex.git
+  cd hex
+  mix install .
+  }
 
 function install_rebar() {
   output_section "Installing rebar"
